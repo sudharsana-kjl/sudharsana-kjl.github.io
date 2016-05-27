@@ -1,1 +1,207 @@
-<h1>Hello world!!!!!!!!!!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+		  <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+<div class="container">
+    <div class="box1" id="b1" onclick="appear('b1')"><span id="s1"></span></div>
+    <div class="box2" id="b2" onclick="appear('b2')"><span id="s1"></span></div>
+    <div class="box3" id="b3" onclick="appear('b3')"><span id="s3"></span></div>
+    <div class="box4" id="b4" onclick="appear('b4')"><span id="s4"></span></div>
+    <div class="box5" id="b5" onclick="appear('b5')"><span id="s5"></span></div>
+    <div class="box6" id="b6" onclick="appear('b6')"><span id="s6"></span></div>
+    <div class="box7" id="b7" onclick="appear('b7')"><span id="s7"></span></div>
+    <div class="box8" id="b8" onclick="appear('b8')"><span id="s8"></span></div>
+    <div class="box9" id="b9" onclick="appear('b9')"><span id="s9"></span></div>
+    <div class="box10" id="b10" onclick="appear('b10')"><span id="s10"></span></div>
+    <div class="box11" id="b11" onclick="appear('b11')"><span id="s11"></span></div>
+    <div class="box12" id="b12" onclick="appear('b12')"><span id="s12"></span></div>
+    <div class="box13" id="b13" onclick="appear('b13')"><span id="s13"></span></div>
+    <div class="box14" id="b14" onclick="appear('b14')"><span id="s14"></span></div>
+    <div class="box15" id="b15" onclick="appear('b15')"><span id="s15"></span></div>
+    <div class="box16" id="b16" onclick="appear('b16')"><span id="s16"></span></div>
+    <br>
+
+
+<script>
+var i1=0,i2=0,i3=0,i4=0,i5=0,i6=0,i7=0,i8=0,i9=0,i10=0,i11=0,i12=0,i13=0,i14=0,i15=0,i16=0;
+
+
+function appear(id){
+   if(id=="b1"){
+    if(i1==0) {appear1("b1");}
+    else {disappear("b1");}
+}
+if(id=="b2"){
+    if(i2==0) {appear1("b2");}
+    else {disappear("b2");}
+}
+
+if(id=="b3"){
+    if(i3==0) {appear1("b3");}
+    else {disappear("b3");}
+}
+if(id=="b4"){
+    if(i4==0) {appear1("b4");}
+    else {disappear("b4");}
+}
+if(id=="b5"){
+    if(i5==0) {appear1("b5");}
+    else {disappear("b5");}
+}
+if(id=="b6"){
+    if(i6==0) {appear1("b6");}
+    else {disappear("b6");}
+}
+if(id=="b7"){
+    if(i7==0) {appear1("b7");}
+    else {disappear("b7");}
+}
+if(id=="b8"){
+    if(i8==0) {appear1("b8");}
+    else {disappear("b8");}
+}
+if(id=="b9"){
+    if(i9==0) {appear1("b9");}
+    else {disappear("b9");}
+}
+if(id=="b10"){
+    if(i10==0) {appear1("b10");}
+    else {disappear("b10");}
+}
+if(id=="b11"){
+    if(i11==0) {appear1("b11");}
+    else {disappear("b11");}
+}
+if(id=="b12"){
+    if(i12==0) {appear1("b12");}
+    else {disappear("b12");}
+}
+
+if(id=="b13"){
+    if(i13==0) {appear1("b13");}
+    else {disappear("b13");}
+}
+if(id=="b14"){
+    if(i14==0) {appear1("b14");}
+    else {disappear("b14");}
+}
+if(id=="b15"){
+    if(i15==0) {appear1("b15");}
+    else {disappear("b15");}
+}
+if(id=="b16"){
+    if(i16==0) {appear1("b16");}
+    else {disappear("b16");}
+}
+}
+function appear1(id){
+	if(id=="b1") i1++;
+    if(id=="b2") i2++;
+    if(id=="b3") i3++;
+    if(id=="b4") i4++;
+    if(id=="b5") i5++;
+    if(id=="b6") i6++;
+    if(id=="b7") i7++;
+    if(id=="b8") i8++;
+    if(id=="b9") i9++;
+    if(id=="b10") i10++;
+    if(id=="b11") i11++;
+    if(id=="b12") i12++;
+    if(id=="b13") i13++;
+    if(id=="b14") i14++;
+    if(id=="b15") i15++;
+    if(id=="b16") i16++;
+
+  	var a = document.getElementById(id);
+  	a.style.background= "#ccc"; 
+  	a.style.color="#000";
+  
+  }
+
+  function disappear(id){
+    if(id=="b1") i1--;
+    if(id=="b2") i2--;
+    if(id=="b3") i3--;
+    if(id=="b4") i4--;
+    if(id=="b5") i5--;
+    if(id=="b6") i6--;
+    if(id=="b7") i7--;
+    if(id=="b8") i8--;
+    if(id=="b9") i9--;
+    if(id=="b10") i10--;
+    if(id=="b11") i11--;
+    if(id=="b12") i12--;
+    if(id=="b13") i13--;
+    if(id=="b14") i14--;
+    if(id=="b15") i15--;
+    if(id=="b16") i16--;
+    var a = document.getElementById(id);
+    a.style.background= "#FC7070"; 
+    a.style.color="#FC7070";
+
+  }
+  window.onload = function (){
+     
+    var arr = new Array(1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8);
+    arr = shuffleArray(arr);
+    var srr = new Array("s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15","s16");
+    srr = shuffleArray(srr);
+    console.log(srr);
+    console.log(arr);
+    /*document.getElementById(srr[0]).innerHTML=0;
+document.getElementById(srr[1]).innerHTML=0;
+document.getElementById(srr[2]).innerHTML=0;
+     document.getElementById(srr[3]).innerHTML=0;
+     document.getElementById(srr[4]).innerHTML=0;
+     document.getElementById(srr[5]).innerHTML=0;
+     document.getElementById(srr[6]).innerHTML=0;
+     document.getElementById(srr[7]).innerHTML=0;
+     document.getElementById(srr[8]).innerHTML=0;
+     document.getElementById(srr[9]).innerHTML=0;
+          document.getElementById(srr[10]).innerHTML=0;
+     document.getElementById(srr[11]).innerHTML=0;
+     document.getElementById(srr[12]).innerHTML=0;
+     document.getElementById(srr[13]).innerHTML=0;
+     document.getElementById(srr[14]).innerHTML=0;
+     document.getElementById(srr[15]).innerHTML=0;
+     */
+     document.getElementById(""+srr[0]).innerHTML=arr[0];
+     document.getElementById(""+srr[1]).innerHTML=arr[1];
+     document.getElementById(""+srr[2]).innerHTML=arr[2];
+     document.getElementById(""+srr[3]).innerHTML=arr[3];
+     document.getElementById(""+srr[4]).innerHTML=arr[4];
+     document.getElementById(""+srr[5]).innerHTML=arr[5];
+     document.getElementById(""+srr[6]).innerHTML=arr[6];
+     document.getElementById(""+srr[7]).innerHTML=arr[7];
+     document.getElementById(""+srr[8]).innerHTML=arr[8];
+     document.getElementById(""+srr[9]).innerHTML=arr[9];
+     document.getElementById(""+srr[10]).innerHTML=arr[10];
+     document.getElementById(""+srr[11]).innerHTML=arr[11];
+     document.getElementById(""+srr[12]).innerHTML=arr[12];
+     document.getElementById(""+srr[13]).innerHTML=arr[13];
+     document.getElementById(""+srr[14]).innerHTML=arr[14];
+     document.getElementById(""+srr[15]).innerHTML=arr[15];
+
+
+  }
+  function randomSort(a,b) {
+    return( parseInt( Math.random()*10 ) %2 );
+}
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+
+</script>
+
+</body>
+</html>
