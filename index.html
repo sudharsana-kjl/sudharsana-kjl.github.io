@@ -5,7 +5,7 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" id="contain">
     <div class="box1" id="b1" onclick="appear('b1')"><span id="s1"></span></div>
     <div class="box2" id="b2" onclick="appear('b2')"><span id="s2"></span></div>
     <div class="box3" id="b3" onclick="appear('b3')"><span id="s3"></span></div>
@@ -23,121 +23,193 @@
     <div class="box15" id="b15" onclick="appear('b15')"><span id="s15"></span></div>
     <div class="box16" id="b16" onclick="appear('b16')"><span id="s16"></span></div>
     <br>
+    
 
-
+</div>
 <script>
-var i1=0,i2=0,i3=0,i4=0,i5=0,i6=0,i7=0,i8=0,i9=0,i10=0,i11=0,i12=0,i13=0,i14=0,i15=0,i16=0;
+var t1={"i1":0,
+"i2":0,
+"i3":0,
+"i4":0,
+"i5":0,
+"i6":0,
+"i7":0,
+"i8":0,
+"i9":0,
+"i10":0,
+"i11":0,
+"i12":0,
+"i13":0,
+"i14":0,
+"i15":0,
+"i16":0}; 
 
-
-function appear(id){
-   if(id=="b1"){
-    if(i1==0) {appear1("b1");}
+var brr= new Array("b1","b2","b3","b4","b5","b6","b7","b8","b9","b10","b11","b12","b13","b14","b15","b16");
+var arr = new Array(1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8);
+var srr = new Array("s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15","s16");
+var irr = new Array("i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14","i15","i16");
+//var t1 = new Array{'box':"b1",'sp':"s1",'val':i1};
+//
+//alert(t1);
+function appear(id1){
+   if(id1=="b1"){
+    if(t1["i1"]==0) {appear1("b1"); }
     else {disappear("b1");}
 }
-if(id=="b2"){
-    if(i2==0) {appear1("b2");}
+if(id1=="b2"){
+    if(t1["i2"]==0) {appear1("b2");}
     else {disappear("b2");}
 }
 
-if(id=="b3"){
-    if(i3==0) {appear1("b3");}
+if(id1=="b3"){
+    if(t1["i3"]==0) {appear1("b3");}
     else {disappear("b3");}
 }
-if(id=="b4"){
-    if(i4==0) {appear1("b4");}
+if(id1=="b4"){
+    if(t1["i4"]==0) {appear1("b4");}
     else {disappear("b4");}
 }
-if(id=="b5"){
-    if(i5==0) {appear1("b5");}
+if(id1=="b5"){
+    if(t1["i5"]==0) {appear1("b5");}
     else {disappear("b5");}
 }
-if(id=="b6"){
-    if(i6==0) {appear1("b6");}
+if(id1=="b6"){
+    if(t1["i6"]==0) {appear1("b6");}
     else {disappear("b6");}
 }
-if(id=="b7"){
-    if(i7==0) {appear1("b7");}
+if(id1=="b7"){
+    if(t1["i7"]==0) {appear1("b7");}
     else {disappear("b7");}
 }
-if(id=="b8"){
-    if(i8==0) {appear1("b8");}
+if(id1=="b8"){
+    if(t1["i8"]==0) {appear1("b8");}
     else {disappear("b8");}
 }
-if(id=="b9"){
-    if(i9==0) {appear1("b9");}
+if(id1=="b9"){
+    if(t1["i9"]==0) {appear1("b9");}
     else {disappear("b9");}
 }
-if(id=="b10"){
-    if(i10==0) {appear1("b10");}
+if(id1=="b10"){
+    if(t1["i10"]==0) {appear1("b10");}
     else {disappear("b10");}
 }
-if(id=="b11"){
-    if(i11==0) {appear1("b11");}
+if(id1=="b11"){
+    if(t1["i11"]==0) {appear1("b11");}
     else {disappear("b11");}
 }
-if(id=="b12"){
-    if(i12==0) {appear1("b12");}
+if(id1=="b12"){
+    if(t1["i12"]==0) {appear1("b12");}
     else {disappear("b12");}
 }
 
-if(id=="b13"){
-    if(i13==0) {appear1("b13");}
+if(id1=="b13"){
+    if(t1["i13"]==0) {appear1("b13");}
     else {disappear("b13");}
 }
-if(id=="b14"){
-    if(i14==0) {appear1("b14");}
+if(id1=="b14"){
+    if(t1["i14"]==0) {appear1("b14");}
     else {disappear("b14");}
 }
-if(id=="b15"){
-    if(i15==0) {appear1("b15");}
+if(id1=="b15"){
+    if(t1["i15"]==0) {appear1("b15");}
     else {disappear("b15");}
 }
-if(id=="b16"){
-    if(i16==0) {appear1("b16");}
+if(id1=="b16"){
+    if(t1["i16"]==0) {appear1("b16");}
     else {disappear("b16");}
+    
 }
+
+}
+function alaaa(id1){
+
+   var pos=0; var bpos; 
+   for( var i=0;i<brr.length;i++){
+    if(id1==brr[i]){
+        pos=i+1;
+            }
+       }
+       bpos = "i"+ pos.toString();
+
+       for (var j=0; (j<irr.length);j++){
+             
+             if(bpos!=irr[j]){
+                
+             if(t1[irr[j]]==1){
+                console.log(irr[j]);
+                j++;
+                listen(("b"+pos.toString()),("b"+j.toString()),("s"+pos.toString()),("s"+j.toString()),pos,j);
+             }
+       }
+   }
+       
+
+   
+}
+function listen(id1,id2,id3,id4,bb,ii){
+
+   var x = document.getElementById(id3).innerHTML;
+   var y = document.getElementById(id4).innerHTML;
+   console.log(id3);
+   console.log(id4);
+   console.log(x);
+   console.log(y);
+  
+   if(x==y)
+    {displayf(id1,bb);
+    displayf(id2,ii);
+    }
+else {setInterval(function(){disappear(id2); disappear(id1);},3000);
+    }
+
 }
 function appear1(id){
-    if(id=="b1") i1++;
-    if(id=="b2") i2++;
-    if(id=="b3") i3++;
-    if(id=="b4") i4++;
-    if(id=="b5") i5++;
-    if(id=="b6") i6++;
-    if(id=="b7") i7++;
-    if(id=="b8") i8++;
-    if(id=="b9") i9++;
-    if(id=="b10") i10++;
-    if(id=="b11") i11++;
-    if(id=="b12") i12++;
-    if(id=="b13") i13++;
-    if(id=="b14") i14++;
-    if(id=="b15") i15++;
-    if(id=="b16") i16++;
-
+    if(id=="b1") ++t1["i1"];
+    if(id=="b2") ++t1["i2"];
+    if(id=="b3") ++t1["i3"];
+    if(id=="b4") ++t1["i4"];
+    if(id=="b5") ++t1["i5"];
+    if(id=="b6") ++t1["i6"];
+    if(id=="b7") ++t1["i7"];
+    if(id=="b8") ++t1["i8"];
+    if(id=="b9") ++t1["i9"];
+    if(id=="b10") ++t1["i10"];
+    if(id=="b11") ++t1["i11"];
+    if(id=="b12") ++t1["i12"];
+    if(id=="b13") ++t1["i13"];
+    if(id=="b14") ++t1["i14"];
+    if(id=="b15") ++t1["i15"];
+    if(id=="b16") ++t1["i16"];
+    
+    display(id);
+    alaaa(id);
+  }
+function display(id){
     var a = document.getElementById(id);
     a.style.background= "#ccc"; 
     a.style.color="#000";
-  
-  }
-
+}
+function displayf(id,aa){
+   t1["i"+aa.toString()] = 0;
+   display(id);
+}
   function disappear(id){
-    if(id=="b1") i1--;
-    if(id=="b2") i2--;
-    if(id=="b3") i3--;
-    if(id=="b4") i4--;
-    if(id=="b5") i5--;
-    if(id=="b6") i6--;
-    if(id=="b7") i7--;
-    if(id=="b8") i8--;
-    if(id=="b9") i9--;
-    if(id=="b10") i10--;
-    if(id=="b11") i11--;
-    if(id=="b12") i12--;
-    if(id=="b13") i13--;
-    if(id=="b14") i14--;
-    if(id=="b15") i15--;
-    if(id=="b16") i16--;
+    if(id=="b1") --t1["i1"];
+    if(id=="b2") --t1["i2"];
+    if(id=="b3") --t1["i3"];
+    if(id=="b4") --t1["i4"];
+    if(id=="b5") --t1["i5"];
+    if(id=="b6") --t1["i6"];
+    if(id=="b7") --t1["i7"];
+    if(id=="b8") --t1["i8"];
+    if(id=="b9") --t1["i9"];
+    if(id=="b10") --t1["i10"];
+    if(id=="b11") --t1["i11"];
+    if(id=="b12") --t1["i12"];
+    if(id=="b13") --t1["i13"];
+    if(id=="b14") --t1["i14"];
+    if(id=="b15") --t1["i15"];
+    if(id=="b16") --t1["i16"];
     var a = document.getElementById(id);
     a.style.background= "#FC7070"; 
     a.style.color="#FC7070";
