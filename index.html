@@ -73,77 +73,77 @@ var irr = new Array("i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i1
 //alert(t1);
 function appear(id1){
    if(id1=="b1"){
-    if(t1["i1"]==0) {appear1("b1"); }
-    else {disappear("b1");}
+    if(t1["i1"]==0) {appear1("b1"); document.getElementById("s1").style.visibility="visible";}
+    else {disappear("b1"); document.getElementById("s1").style.visibility="hidden";}
 }
 if(id1=="b2"){
-    if(t1["i2"]==0) {appear1("b2");}
-    else {disappear("b2");}
+    if(t1["i2"]==0) {appear1("b2");document.getElementById("s2").style.visibility="visible";}
+    else {disappear("b2");document.getElementById("s2").style.visibility="hidden";}
 }
 
 if(id1=="b3"){
-    if(t1["i3"]==0) {appear1("b3");}
-    else {disappear("b3");}
+    if(t1["i3"]==0) {appear1("b3");document.getElementById("s3").style.visibility="visible";}
+    else {disappear("b3");document.getElementById("s3").style.visibility="hidden";}
 }
 if(id1=="b4"){
-    if(t1["i4"]==0) {appear1("b4");}
-    else {disappear("b4");}
+    if(t1["i4"]==0) {appear1("b4");document.getElementById("s4").style.visibility="visible";}
+    else {disappear("b4");document.getElementById("s4").style.visibility="hidden";}
 }
 if(id1=="b5"){
-    if(t1["i5"]==0) {appear1("b5");}
-    else {disappear("b5");}
+    if(t1["i5"]==0) {appear1("b5");document.getElementById("s5").style.visibility="visible";}
+    else {disappear("b5");document.getElementById("s5").style.visibility="hidden";}
 }
 if(id1=="b6"){
-    if(t1["i6"]==0) {appear1("b6");}
-    else {disappear("b6");}
+    if(t1["i6"]==0) {appear1("b6");document.getElementById("s6").style.visibility="visible";}
+    else {disappear("b6");document.getElementById("s6").style.visibility="hidden";}
 }
 if(id1=="b7"){
-    if(t1["i7"]==0) {appear1("b7");}
-    else {disappear("b7");}
+    if(t1["i7"]==0) {appear1("b7");document.getElementById("s7").style.visibility="visible";}
+    else {disappear("b7");document.getElementById("s7").style.visibility="hidden";}
 }
 if(id1=="b8"){
-    if(t1["i8"]==0) {appear1("b8");}
-    else {disappear("b8");}
+    if(t1["i8"]==0) {appear1("b8");document.getElementById("s8").style.visibility="visible";}
+    else {disappear("b8");document.getElementById("s8").style.visibility="hidden";}
 }
 if(id1=="b9"){
-    if(t1["i9"]==0) {appear1("b9");}
-    else {disappear("b9");}
+    if(t1["i9"]==0) {appear1("b9");document.getElementById("s9").style.visibility="visible";}
+    else {disappear("b9");document.getElementById("s9").style.visibility="hidden";}
 }
 if(id1=="b10"){
-    if(t1["i10"]==0) {appear1("b10");}
-    else {disappear("b10");}
+    if(t1["i10"]==0) {appear1("b10");document.getElementById("s10").style.visibility="visible";}
+    else {disappear("b10");document.getElementById("s10").style.visibility="hidden";}
 }
 if(id1=="b11"){
-    if(t1["i11"]==0) {appear1("b11");}
-    else {disappear("b11");}
+    if(t1["i11"]==0) {appear1("b11");document.getElementById("s11").style.visibility="visible";}
+    else {disappear("b11");document.getElementById("s11").style.visibility="hidden";}
 }
 if(id1=="b12"){
-    if(t1["i12"]==0) {appear1("b12");}
-    else {disappear("b12");}
+    if(t1["i12"]==0) {appear1("b12");document.getElementById("s12").style.visibility="visible";}
+    else {disappear("b12");document.getElementById("s12").style.visibility="hidden";}
 }
 
 if(id1=="b13"){
-    if(t1["i13"]==0) {appear1("b13");}
-    else {disappear("b13");}
+    if(t1["i13"]==0) {appear1("b13");document.getElementById("s13").style.visibility="visible";}
+    else {disappear("b13");document.getElementById("s13").style.visibility="hidden";}
 }
 if(id1=="b14"){
-    if(t1["i14"]==0) {appear1("b14");}
-    else {disappear("b14");}
+    if(t1["i14"]==0) {appear1("b14");document.getElementById("s14").style.visibility="visible";}
+    else {disappear("b14");document.getElementById("s14").style.visibility="hidden";}
 }
 if(id1=="b15"){
-    if(t1["i15"]==0) {appear1("b15");}
-    else {disappear("b15");}
+    if(t1["i15"]==0) {appear1("b15");document.getElementById("s15").style.visibility="visible";}
+    else {disappear("b15");document.getElementById("s15").style.visibility="hidden";}
 }
 if(id1=="b16"){
-    if(t1["i16"]==0) {appear1("b16");}
-    else {disappear("b16");}
+    if(t1["i16"]==0) {appear1("b16");document.getElementById("s16").style.visibility="visible";}
+    else {disappear("b16");document.getElementById("s16").style.visibility="hidden";}
     
 }
 
 }
 function alaaa(id1){
 
-   var pos=0; var bpos; var spos;
+   var pos=0; var bpos; 
    for( var i=0;i<brr.length;i++){
     if(id1==brr[i]){
         pos=i+1;
@@ -152,7 +152,7 @@ function alaaa(id1){
        bpos = "i"+ pos.toString();
        spos = "s" + pos.toString();
        
-       document.getElementById(spos).style.visibility = "visible";
+       
 
        for (var j=0; (j<irr.length);j++){
              
@@ -246,9 +246,7 @@ function displayf(id,aa){
     arr = shuffleArray(arr);
     var srr = new Array("s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15","s16");
     srr = shuffleArray(srr);
-    console.log(srr);
-    console.log(arr);
-   
+       
      document.getElementById(""+srr[0]).innerHTML=arr[0];
      document.getElementById(""+srr[1]).innerHTML=arr[1];
      document.getElementById(""+srr[2]).innerHTML=arr[2];
