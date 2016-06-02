@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+<div class="container" id="contain">
+    <div class="row">
+        <div class="box1 col-2" id="b1" onclick="appear('b1')"><span id="s1"></span></div>
+        <div class="box2 col-2" id="b2" onclick="appear('b2')"><span id="s2"></span></div>
+        <div class="box3 col-2" id="b3" onclick="appear('b3')"><span id="s3"></span></div>
+        <div class="box4 col-2" id="b4" onclick="appear('b4')"><span id="s4"></span></div>
+        <div class="col-4"></div>
+    </div>
+    <br>
+    
+
+    <div class="row">
+        <div class="box5 col-2" id="b5" onclick="appear('b5')"><span id="s5"></span></div>
+        <div class="box6 col-2" id="b6" onclick="appear('b6')"><span id="s6"></span></div>
+        <div class="box7 col-2" id="b7" onclick="appear('b7')"><span id="s7"></span></div>
+        <div class="box8 col-2" id="b8" onclick="appear('b8')"><span id="s8"></span></div>
+        <div class="col-4"></div>
+    </div>
+    <br>
+    
+    <div class="row">
+        <div class="box9 col-2" id="b9" onclick="appear('b9')"><span id="s9"></span></div>
+        <div class="box10 col-2" id="b10" onclick="appear('b10')"><span id="s10"></span></div>
+        <div class="box11 col-2" id="b11" onclick="appear('b11')"><span id="s11"></span></div>
+        <div class="box12 col-2" id="b12" onclick="appear('b12')"><span id="s12"></span></div>
+        <div class="col-4"></div>
+    </div>
+    <br>
+    
+    <div class="row">
+        <div class="box13 col-2" id="b13" onclick="appear('b13')"><span id="s13"></span></div>
+        <div class="box14 col-2" id="b14" onclick="appear('b14')"><span id="s14"></span></div>
+        <div class="box15 col-2" id="b15" onclick="appear('b15')"><span id="s15"></span></div>
+        <div class="box16 col-2" id="b16" onclick="appear('b16')"><span id="s16"></span></div>
+        <div class="col-4"></div>
+    </div>
+    <br>
+    
+
+</div>
+<script>
+var t1={"i1":0,
+"i2":0,
+"i3":0,
+"i4":0,
+"i5":0,
+"i6":0,
+"i7":0,
+"i8":0,
+"i9":0,
+"i10":0,
+"i11":0,
+"i12":0,
+"i13":0,
+"i14":0,
+"i15":0,
+"i16":0}; 
+var timeinterval;
+var brr= new Array("b1","b2","b3","b4","b5","b6","b7","b8","b9","b10","b11","b12","b13","b14","b15","b16");
+var arr = new Array(1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8);
+var srr = new Array("s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15","s16");
+var irr = new Array("i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14","i15","i16");
+//var t1 = new Array{'box':"b1",'sp':"s1",'val':i1};
+//
+//alert(t1);
+function appear(id1){
+   if(id1=="b1"){
+    if(t1["i1"]==0) {appear1("b1"); document.getElementById("s1").style.visibility="visible";}
+    else {disappear("b1"); document.getElementById("s1").style.visibility="hidden";}
+}
+if(id1=="b2"){
+    if(t1["i2"]==0) {appear1("b2");document.getElementById("s2").style.visibility="visible";}
+    else {disappear("b2");document.getElementById("s2").style.visibility="hidden";}
+}
+
+if(id1=="b3"){
+    if(t1["i3"]==0) {appear1("b3");document.getElementById("s3").style.visibility="visible";}
+    else {disappear("b3");document.getElementById("s3").style.visibility="hidden";}
+}
+if(id1=="b4"){
+    if(t1["i4"]==0) {appear1("b4");document.getElementById("s4").style.visibility="visible";}
+    else {disappear("b4");document.getElementById("s4").style.visibility="hidden";}
+}
+if(id1=="b5"){
+    if(t1["i5"]==0) {appear1("b5");document.getElementById("s5").style.visibility="visible";}
+    else {disappear("b5");document.getElementById("s5").style.visibility="hidden";}
+}
+if(id1=="b6"){
+    if(t1["i6"]==0) {appear1("b6");document.getElementById("s6").style.visibility="visible";}
+    else {disappear("b6");document.getElementById("s6").style.visibility="hidden";}
+}
+if(id1=="b7"){
+    if(t1["i7"]==0) {appear1("b7");document.getElementById("s7").style.visibility="visible";}
+    else {disappear("b7");document.getElementById("s7").style.visibility="hidden";}
+}
+if(id1=="b8"){
+    if(t1["i8"]==0) {appear1("b8");document.getElementById("s8").style.visibility="visible";}
+    else {disappear("b8");document.getElementById("s8").style.visibility="hidden";}
+}
+if(id1=="b9"){
+    if(t1["i9"]==0) {appear1("b9");document.getElementById("s9").style.visibility="visible";}
+    else {disappear("b9");document.getElementById("s9").style.visibility="hidden";}
+}
+if(id1=="b10"){
+    if(t1["i10"]==0) {appear1("b10");document.getElementById("s10").style.visibility="visible";}
+    else {disappear("b10");document.getElementById("s10").style.visibility="hidden";}
+}
+if(id1=="b11"){
+    if(t1["i11"]==0) {appear1("b11");document.getElementById("s11").style.visibility="visible";}
+    else {disappear("b11");document.getElementById("s11").style.visibility="hidden";}
+}
+if(id1=="b12"){
+    if(t1["i12"]==0) {appear1("b12");document.getElementById("s12").style.visibility="visible";}
+    else {disappear("b12");document.getElementById("s12").style.visibility="hidden";}
+}
+
+if(id1=="b13"){
+    if(t1["i13"]==0) {appear1("b13");document.getElementById("s13").style.visibility="visible";}
+    else {disappear("b13");document.getElementById("s13").style.visibility="hidden";}
+}
+if(id1=="b14"){
+    if(t1["i14"]==0) {appear1("b14");document.getElementById("s14").style.visibility="visible";}
+    else {disappear("b14");document.getElementById("s14").style.visibility="hidden";}
+}
+if(id1=="b15"){
+    if(t1["i15"]==0) {appear1("b15");document.getElementById("s15").style.visibility="visible";}
+    else {disappear("b15");document.getElementById("s15").style.visibility="hidden";}
+}
+if(id1=="b16"){
+    if(t1["i16"]==0) {appear1("b16");document.getElementById("s16").style.visibility="visible";}
+    else {disappear("b16");document.getElementById("s16").style.visibility="hidden";}
+    
+}
+
+}
+function alaaa(id1){
+
+   var pos=0; var bpos; 
+   for( var i=0;i<brr.length;i++){
+    if(id1==brr[i]){
+        pos=i+1;
+            }
+       }
+       bpos = "i"+ pos.toString();
+       spos = "s" + pos.toString();
+       
+       
+
+       for (var j=0; (j<irr.length);j++){
+             
+             if(bpos!=irr[j]){
+                
+             if(t1[irr[j]]==1){
+                console.log(irr[j]);
+                j++;
+                listen(("b"+pos.toString()),("b"+j.toString()),("s"+pos.toString()),("s"+j.toString()),pos,j);
+             }
+       }
+   }
+       
+
+   
+}
+function listen(id1,id2,id3,id4,bb,ii){
+
+   clearInterval(timeinterval);
+   var x = document.getElementById(id3).innerHTML;
+   var y = document.getElementById(id4).innerHTML;
+   console.log(id3);
+   console.log(id4);
+   console.log(x);
+   console.log(y);
+  
+   if(x==y)
+    {displayf(id1,bb);
+    displayf(id2,ii);
+    }
+else {timeinterval=setInterval(function(){disappear(id2); disappear(id1);},3000);
+    }
+
+}
+function appear1(id){
+    if(id=="b1") t1["i1"]=1;
+    if(id=="b2") t1["i2"]=1;
+    if(id=="b3") t1["i3"]=1;
+    if(id=="b4") t1["i4"]=1;
+    if(id=="b5") t1["i5"]=1;
+    if(id=="b6") t1["i6"]=1;
+    if(id=="b7") t1["i7"]=1;
+    if(id=="b8") t1["i8"]=1;
+    if(id=="b9") t1["i9"]=1;
+    if(id=="b10") t1["i10"]=1;
+    if(id=="b11") t1["i11"]=1;
+    if(id=="b12") t1["i12"]=1;
+    if(id=="b13") t1["i13"]=1;
+    if(id=="b14") t1["i14"]=1;
+    if(id=="b15") t1["i15"]=1;
+    if(id=="b16") t1["i16"]=1;
+    
+    display(id);
+    alaaa(id);
+  }
+function display(id){
+    var a = document.getElementById(id);
+    a.style.background= "#ccc"; 
+    a.style.color="#000";
+}
+function displayf(id,aa){
+    
+   t1["i"+aa.toString()] = 0;
+   display(id);
+}
+  function disappear(id){
+    if(id=="b1") t1["i1"]=0;
+    if(id=="b2") t1["i2"]=0;
+    if(id=="b3") t1["i3"]=0;
+    if(id=="b4") t1["i4"]=0;
+    if(id=="b5") t1["i5"]=0;
+    if(id=="b6") t1["i6"]=0;
+    if(id=="b7") t1["i7"]=0;
+    if(id=="b8") t1["i8"]=0;
+    if(id=="b9") t1["i9"]=0;
+    if(id=="b10") t1["i10"]=0;
+    if(id=="b11") t1["i11"]=0;
+    if(id=="b12") t1["i12"]=0;
+    if(id=="b13") t1["i13"]=0;
+    if(id=="b14") t1["i14"]=0;
+    if(id=="b15") t1["i15"]=0;
+    if(id=="b16") t1["i16"]=0;
+    var a = document.getElementById(id);
+    a.style.background= "#FC7070"; 
+    a.style.color="#FC7070";
+
+  }
+  window.onload = function (){
+     
+    var arr = new Array(1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8);
+    arr = shuffleArray(arr);
+    var srr = new Array("s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11","s12","s13","s14","s15","s16");
+    srr = shuffleArray(srr);
+       
+     document.getElementById(""+srr[0]).innerHTML=arr[0];
+     document.getElementById(""+srr[1]).innerHTML=arr[1];
+     document.getElementById(""+srr[2]).innerHTML=arr[2];
+     document.getElementById(""+srr[3]).innerHTML=arr[3];
+     document.getElementById(""+srr[4]).innerHTML=arr[4];
+     document.getElementById(""+srr[5]).innerHTML=arr[5];
+     document.getElementById(""+srr[6]).innerHTML=arr[6];
+     document.getElementById(""+srr[7]).innerHTML=arr[7];
+     document.getElementById(""+srr[8]).innerHTML=arr[8];
+     document.getElementById(""+srr[9]).innerHTML=arr[9];
+     document.getElementById(""+srr[10]).innerHTML=arr[10];
+     document.getElementById(""+srr[11]).innerHTML=arr[11];
+     document.getElementById(""+srr[12]).innerHTML=arr[12];
+     document.getElementById(""+srr[13]).innerHTML=arr[13];
+     document.getElementById(""+srr[14]).innerHTML=arr[14];
+     document.getElementById(""+srr[15]).innerHTML=arr[15];
+
+
+  }
+  function randomSort(a,b) {
+    return( parseInt( Math.random()*10 ) %2 );
+}
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+}
+
+
+</script>
+
+</body>
+</html>
