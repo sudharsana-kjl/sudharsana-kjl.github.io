@@ -1,0 +1,22 @@
+body{
+	background-color: #ffff99;
+}
+#intro,#name{
+	font-size: 3em;
+	
+
+}
+#intro{
+	margin-left: 45%;
+	margin-top: 10%;
+}
+#name{
+	margin-left: 40%;
+	margin-top: 1%;
+}
+#mem{
+	background-color: #ff6600;
+	font-size: 4em;
+	margin-left: 35%;
+	margin-top: 5%;
+}
