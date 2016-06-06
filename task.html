@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+#gameover{
+    font-size: 3em;
+    margin-top: 50px;
+    margin-left: 500px;
+    visibility: hidden;
+}
+
+</style>
+</head>
+<body onload="startGame()">
+    <div id="gameover">Game Over!</div>
+<script>
+
+var myGamePiece;
+var myObstacles = [];
+var myScore;
+var c=0;
+
+//document.getElementById("myDIV").style.WebkitAnimation = "mynewmove 4s 2";
+//document.getElementById("myDIV").style.animation = "mynewmove 4s 2";
+function updateGameArea() {
+  
+    var x, y;
+    for (i = 0; i < myObstacles.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles[i])) {
+            myGameArea.stop();
+            return;
+        } 
+    }
+    myGameArea.clear();
+    myGameArea.frameNo += 1;
+    if (myGameArea.frameNo == 1 || everyinterval(150)) {
+        x = myGameArea.canvas.width - 600 ;
+        y = myGameArea.canvas.height - 30;
+        
+        myObstacles.push(new component(10, 200, "green", x, y));
+    }
+    for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].x += -1;
+        myObstacles[i].update();
+    }
+    myScore.text="SCORE: " + Math.floor(myGameArea.frameNo/10);
+    myScore.update();
+    myGamePiece.newPos();
+    myGamePiece.update();
+}
+function startGame() {
+    
+    myGamePiece = new component(30, 30, "red", 400, 240);
+    myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+    myGameArea.start();
+    myGamePiece.update();
+
+ }
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 1300;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+
+        this.interval = setInterval(function(){updateGameArea();},20);
+
+        
+    },
+    clear : function(){
+        this.context.clearRect(0,0,this.canvas.width,this.canvas.height);
+    },
+    stop : function() {
+        clearInterval(this.interval);
+        gover();
+    }
+}
+function gover (){
+    document.getElementById("gameover").style.visibility = "visible";
+}
+
+function everyinterval(n) {
+    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+    return false;
+}
+
+function component(width, height, color, x, y, type) {
+    this.type = type;
+    this.width = width;
+    this.height = height;
+    this.speedY = 0;
+    this.x = x;
+    this.y = y;
+    //this.gravity = 0.1;
+    //this.gravitySpeed = 0 ; 
+    this.update = function(){ 
+     
+    ctx = myGameArea.context;
+    if (this.type == "text") {
+      ctx.font = this.width + " " + this.height;
+      ctx.fillStyle = color;
+      ctx.fillText(this.text, this.x, this.y);
+    } else {
+    ctx.fillStyle = color;
+    ctx.fillRect(this.x, this.y, this.width, this.height);}
+
+  }
+  this.newPos = function() {
+        //this.gravitySpeed += this.gravity;
+        this.y += this.speedY ; 
+        this.hitBottom();
+    } 
+    this.hitBottom = function (){
+        
+        if(this.y <= 180){
+            
+            this.y=180;
+            this.speedY=0;
+            c=1; 
+            
+        }
+        if(this.y>240){
+            this.y=240;
+            this.speedY=0;
+            c=0;
+        }
+    }
+    this.crashWith = function(otherobj) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+        if ((mybottom < othertop) ||
+               (mytop > otherbottom) ||
+               (myright < otherleft) ||
+               (myleft > otherright)) {
+           crash = false;
+
+        }
+        return crash;
+    }
+}
+function jump(){
+myGamePiece.speedY +=1; 
+    myGamePiece.update();
+}
+
+function doKeyDown(evt){
+   
+if(evt.keyCode==32) {
+ 
+ myGamePiece.speedY -=1;
+ myGamePiece.update();
+ setTimeout(jump,1200);
+       
+    
+   /*for(var i=0;i<1;i++){
+    myGamePiece.speedY +=1;
+    myGamePiece.update();
+
+      }*/
+}
+}
+/*function doKeyUp(evt){
+    if(evt.keyCode==32){
+  
+    myGamePiece.speedY +=1;
+    myGamePiece.update();
+
+      
+    }
+}*/
+
+    
+
+window.addEventListener('keydown',doKeyDown,true);
+//window.addEventListener('keyup',doKeyUp,true);
+
+</script>
+
+
+</body>
+</html>
