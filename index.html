@@ -1,20 +1,130 @@
-<html>
-<head>
-	<title>Skjl's</title>
-	<link rel="stylesheet" type="text/css" href="css/home.css">
-</head>
-<body>
-	<div id="one">
-		<div id="intro">Hey!</div>
-		<div id="name">Happy Coding!</div>
-    </div>
-    <button id="pingpong"><a href="pingpong.html">Ping Pong</a></button>
-    <button id="mem" ><a href="memgame.html">Memory Game</a></button>
-    <button id="task" ><a href="task.html">Jumpy</a></button>
-</body>
+<!DOCTYPE html>
+<html  class="no-js">
+	<head>
+		
+		<title>Skjl's</title>
+		
+		
+		
+		<link rel="stylesheet" type="text/css" href="css/index1.css" />
+		<script src="js/modernizr-custom.js"></script>
+	</head>
+	<body>
+		<!-- SVG symbol used for navigation arrows -->
+		<svg class="hidden">
+			<defs>
+				<symbol id="icon-arrow" viewBox="0 0 39 51.43">
+					<title>Arrow Left</title>
+					<polygon points="7 25.71 36 45.71 36 26.08 36 5.71 7 25.71" stroke-miterlimit="10" stroke-width="6"/><line x1="3" y1="5.71" x2="3" y2="45.71" fill="none" stroke-miterlimit="10" stroke-width="6"/>
+				</symbol>
+			</defs>
+		</svg>
+		<main class="container">
+			<div class="pages">
+				<div class="page page--current"><!-- intro page -->
+					<header class="codrops-header">
+					</header>
+					<div id="intro" style="font-size:3em;">A good programmer is someone who always looks both ways before crossing a one-way street.</div>
+					<div id="fun"></div>
+				</div><!-- /page -->
+				<div class="page page1">
+					<blockquote class="quote">
+						<nav class="cl-effect-7">
+					<a href="memgame.html" id="mem">Mem Game</a>
+					<a href="pingpong.html" id="pingpong">Ping Pong</a>
+					<a href="task.html" id="task">Jumpy</a>
+					
+				</nav>
+						<!--<button id="pingpong"><a href="pingpong.html">Ping Pong</a></button>
+                        <button id="mem" ><a href="memgame.html">Memory Game</a></button>
+                        <button id="task" ><a href="task.html">Jumpy</a></button>-->
+					</blockquote>
+				</div>
+				<div class="page page2">
+					<div id="intro" style="font-size:3em;">
+					Sudharsana K J L<br> B Tech(CSE)
+				</div>
+				</div>
+			</div><!-- /pages -->
+			<nav class="pagenav">
+				<button class="pagenav__button pagenav__button--top" aria-label="Navigate top"><svg class="icon icon--rtop"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--left" aria-label="Navigate left"><svg class="icon"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--right" aria-label="Navigate right"><svg class="icon icon--rright"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--bottom" aria-label="Navigate bottom"><svg class="icon icon--rbottom"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornertopleft" aria-label="Navigate top left"><svg class="icon icon--rtopleft"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornertopright" aria-label="Navigate top right"><svg class="icon icon--rtopright"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornerbottomleft" aria-label="Navigate bottom left"><svg class="icon icon--rbottomleft"><use xlink:href="#icon-arrow"></use></svg></button>
+				<button class="pagenav__button pagenav__button--cornerbottomright" aria-label="Navigate bottom right"><svg class="icon icon--rbottomright"><use xlink:href="#icon-arrow"></use></svg></button>
+					
+			</nav>
+		</main>
+		<script src="js/classie.js"></script>
+		<script src="js/main.js"></script>
+		<script>
+		(function() {
+			var pages = [].slice.call(document.querySelectorAll('.page--current, .page1, .page2')),
+				currentPage = 0,
+				pno=0,
+				revealerOpts = {
+					// the layers are the elements that move from the sides
+					nmbLayers : 3,
+					// bg color of each layer
+					bgcolor : ['#000', '#fff', '#3E3A35'],
+					// effect classname
+					effect : 'anim--effect-4',
+					onStart : function(direction) {
+						// next page gets class page--animate-[direction]
+						/*var nextPage = pages[0];
+						console.log(pages[0]);*/
+						var nextPage = pages[currentPage];
+					
+						classie.add(nextPage, 'page--animate-' + direction);
+						/*if(pno==2)
+						 {
+						 	nextPage = pages[0];
+						 }
+						else {nextPage = pages[1];// pno++;
+						}*/
+						classie.add(nextPage, 'page--animate-' + direction);
+					},
+					/*onEnd : function(direction) {
+						// remove class page--animate-[direction] from next page
+						var nextPage = pages[0];
+						nextPage.className = 'page';
+					}*/
+				};
+				console.log(pages[2]);
+				revealer = new Revealer(revealerOpts);
+
+			// clicking the page nav buttons
+			document.querySelector('button.pagenav__button--top').addEventListener('click', function() { reveal('top'); });
+			document.querySelector('button.pagenav__button--left').addEventListener('click', function() { reveal('left'); });
+			document.querySelector('button.pagenav__button--right').addEventListener('click', function() { reveal('right'); });
+			document.querySelector('button.pagenav__button--bottom').addEventListener('click', function() { reveal('bottom'); });
+			document.querySelector('button.pagenav__button--cornertopleft').addEventListener('click', function() { reveal('cornertopleft'); });
+			document.querySelector('button.pagenav__button--cornertopright').addEventListener('click', function() { reveal('cornertopright'); });
+			document.querySelector('button.pagenav__button--cornerbottomleft').addEventListener('click', function() { reveal('cornerbottomleft'); });
+			document.querySelector('button.pagenav__button--cornerbottomright').addEventListener('click', function() { reveal('cornerbottomright'); });
+
+			// triggers the effect by calling instance.reveal(direction, callbackTime, callbackFn)
+			function reveal(direction) {
+				var callbackTime = 750,
+					callbackFn = function() {
+						classie.remove(pages[currentPage], 'page--current');
+						if(currentPage ==2)
+						{currentPage = 0;}
+						else currentPage++;// currentPage === 0 ? 1 : 0;
+						classie.add(pages[currentPage], 'page--current');	
+					};
+
+				revealer.reveal(direction, callbackTime, callbackFn);
+			}
+
+			// changing the effect..
+			
+			
+		})();
+		</script>
+		<h1>Hey there!</h1>
+	</body>
 </html>
-
-
-
-
-
