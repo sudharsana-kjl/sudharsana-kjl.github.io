@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Pong</title>
+		<style>
+		#game {
+	background-color: #353535;
+   }
+   #start{float: left;
+   	margin-left: 900px;
+	margin-top: -400px;
+	 background-color: #ffff99; 
+    color: black; 
+    border: 2px solid #ff471a;
+    width: 100px;
+    height: 50px;
+    font-size: 1.5em;
+   }
+   #start:hover {
+   	background-color: #ff471a;
+    color: white;
+    font-size: 1.5em;
+   }
+   #restart{float: left;
+   	margin-left: 900px;
+	margin-top: -400px;
+	 background-color: #ffff99; 
+    color: black; 
+    border: 2px solid #ff471a;
+    width: 150px;
+    height: 50px;
+    font-size: 1.5em;
+    visibility: hidden;
+   }
+   #restart:hover {
+   	background-color: #ff471a;
+    color: white;
+    font-size: 1.5em;
+   }
+   #pause{
+   	float: left;
+   	margin-left: 900px;
+	margin-top: -300px;
+	 background-color: #ffff99; 
+    color: black; 
+    border: 2px solid #ff471a;
+    width: 100px;
+    height: 50px;
+    font-size: 1.5em;
+   }
+   #pause:hover {
+   	background-color: #ff471a;
+    color: white;
+    font-size: 1.5em;
+   }
+   #resume{
+   	float: left;
+   	margin-left: 1050px;
+	margin-top: -300px;
+	 background-color: #ffff99; 
+    color: black; 
+    border: 2px solid #ff471a;
+    width: 100px;
+    height: 50px;
+    font-size: 1.5em;
+    
+   }
+   #resume:hover {
+   	background-color: #ff471a;
+    color: white;
+    font-size: 1.5em;
+   }
+   #over{
+   	margin-left: 900px;
+	margin-top: -200px;
+	font-size: 3em;
+	visibility: hidden;
+   }
+
+		</style>
+		
+	</head>
+	<body>
+
+		<canvas id="game" width="850" height="500"></canvas>
+		<button id="start" onclick="start()">Start</button>
+		<button id="pause" onclick="pause()">Pause</button>
+		<button id="resume" onclick="resume()">Resume</button>
+		<button id="restart" onclick="restart()">Play Again?</button> 
+		<div id="over">Game Over!!</div>
+		<script>
+		var scr1 =0 ;
+		var scr2 =0;
+		var timeinterval;
+		var canvas = document.getElementById("game");
+		var game = new Game();
+		var game1 = new Game();
+		var mysound = new sound("pingpong.mp3");
+		var oversound = new sound("over.mp3");
+		function Game() {
+			
+			this.width = canvas.width;
+			this.height = canvas.height;
+			this.context = canvas.getContext("2d");
+			this.context.fillStyle = "white";
+			this.keys = new KeyListener();
+			this.p1 = new Paddle(5, 0);
+			this.p1.y = this.height/2 - this.p1.height/2;
+			this.display1 = new Display(this.width/4, 25);
+			this.p2 = new Paddle(this.width - 15, 0);
+			this.p2.y = this.height/2 - this.p2.height/2;
+			this.display2 = new Display(this.width*3/4, 25);
+			this.ball = new Ball();
+			this.ball.x = this.width/2;
+			this.ball.y = this.height/2;
+			this.ball.vy = 5;//Math.floor(Math.random()*12 - 6);
+			this.ball.vx = 5;//7 - Math.abs(this.ball.vy);
+		}
+		Game.prototype.draw = function()
+		{
+			this.context.clearRect(0, 0, this.width, this.height);
+			this.context.fillRect(this.width/2, 0, 2, this.height);
+			this.ball.draw(this.context);
+			this.p1.draw(this.context);
+			this.p2.draw(this.context);
+			this.display1.draw(this.context);
+			this.display2.draw(this.context);
+		};
+ 
+		Game.prototype.update = function()
+		{
+			if (this.paused)
+				return;
+			if (this.keys.isPressed(83)) { // DOWN
+				this.p1.y = Math.min(this.height - this.p1.height, this.p1.y + 4);
+			} else if (this.keys.isPressed(87)) { // UP
+				this.p1.y = Math.max(0, this.p1.y - 4);
+			}
+ 
+			if (this.keys.isPressed(40)) { // DOWN
+				this.p2.y = Math.min(this.height - this.p2.height, this.p2.y + 4);
+			} else if (this.keys.isPressed(38)) { // UP
+				this.p2.y = Math.max(0, this.p2.y - 4);
+			}
+			this.ball.update();
+			if (this.ball.x > this.width || this.ball.x + this.ball.width < 0) {
+				game.paused;
+				gameover();
+				//alert("game over");
+			} else if (this.ball.y > this.height || this.ball.y + this.ball.height < 0) {
+				
+				this.ball.vy = -this.ball.vy;
+			}
+			if (this.ball.vx > 0) {
+				if (this.p2.x <= this.ball.x + this.ball.width &&
+						this.p2.x > this.ball.x - this.ball.vx + this.ball.width) {
+					var collisionDiff = this.ball.x + this.ball.width - this.p2.x;
+					var k = collisionDiff/this.ball.vx;
+					var y = this.ball.vy*k + (this.ball.y - this.ball.vy);
+					if (y >= this.p2.y && y + this.ball.height <= this.p2.y + this.p2.height) {
+						// collides with right paddle
+						mysound.play();
+						this.score(this.p2);
+						scr2++;
+						
+						this.ball.x = this.p2.x - this.ball.width;
+						this.ball.y = Math.floor(this.ball.y - this.ball.vy + this.ball.vy*k);
+						this.ball.vx = -this.ball.vx;
+					}
+				}
+			} else {
+				if (this.p1.x + this.p1.width >= this.ball.x) {
+					var collisionDiff = this.p1.x + this.p1.width - this.ball.x;
+					var k = collisionDiff/this.ball.vx;
+					var y = this.ball.vy*k + (this.ball.y - this.ball.vy);
+					if (y >= this.p1.y && y + this.ball.height <= this.p1.y + this.p1.height) {
+						// collides with the left paddle
+						mysound.play();
+						this.score(this.p1);
+						scr1++;
+						
+						this.ball.x = this.p1.x + this.p1.width;
+						this.ball.y = Math.floor(this.ball.y - this.ball.vy + this.ball.vy*k);
+						this.ball.vx = -this.ball.vx;
+					}
+				}
+			}
+			// Top and bottom collision
+			if ((this.ball.vy < 0 && this.ball.y < 0) ||
+					(this.ball.vy > 0 && this.ball.y + this.ball.height > this.height)) {
+				this.ball.vy = -this.ball.vy;
+			}
+			/*if (this.ball.x >= this.width)
+				this.score(this.p1);
+			else if (this.ball.x + this.ball.width <= 0)
+				this.score(this.p2);*/
+			this.display1.value = this.p1.score;
+			this.display2.value = this.p2.score;
+		};
+		Game.prototype.score = function(p)
+		{
+			// player scores
+			p.score++;
+			var player = p == this.p1 ? 1 : 0;
+		 
+			// set ball position
+			this.ball.x = this.width/2;
+			this.ball.y = p.y + p.height/2;
+		 
+			// set ball velocity
+			this.ball.vy = 5;//Math.floor(Math.random()*10);
+			this.ball.vx = 5;//14 - Math.abs(this.ball.vy);
+			if (player == 1)
+				this.ball.vx *= -1;
+		};
+		Game.prototype.start = function(){
+
+			MainLoop();
+		}
+		function Display(x, y) {
+			this.x = x;
+			this.y = y;
+			this.value = 0;
+		}
+ 
+		Display.prototype.draw = function(p)
+		{    p.font = "30px Arial";
+			p.fillText("Score: "+this.value, this.x, this.y);
+		};
+
+ 
+		function MainLoop() {
+			game.update();
+			game.draw();
+			// Call the main loop again at a frame rate of 30fps
+			timeinterval = setTimeout(MainLoop, 30);
+		}
+		function Paddle(x,y) {
+			this.x = x;
+			this.y = y;
+			this.width = 10;
+			this.height = 80;
+			this.score = 0;
+		}
+		Paddle.prototype.draw = function(p)
+		{
+			p.fillRect(this.x, this.y, this.width, this.height);
+		};
+		 function KeyListener() {
+			this.pressedKeys = [];
+		 
+			this.keydown = function(e) {
+				this.pressedKeys[e.keyCode] = true;
+			};
+		 
+			this.keyup = function(e) {
+				this.pressedKeys[e.keyCode] = false;
+			};
+		 
+			document.addEventListener("keydown", this.keydown.bind(this));
+			document.addEventListener("keyup", this.keyup.bind(this));
+		}
+		KeyListener.prototype.isPressed = function(key)
+		{
+			return this.pressedKeys[key] ? true : false;
+		};
+		 
+		KeyListener.prototype.addKeyPressListener = function(keyCode, callback)
+		{
+			document.addEventListener("keypress", function(e) {
+				if (e.keyCode == keyCode)
+					callback(e);
+			});
+		};
+		function Ball() {
+			this.x = 0;
+			this.y = 0;
+			this.vx = 0;
+			this.vy = 0;
+			this.width = 14;
+			this.height = 14;
+		}
+		Ball.prototype.update = function()
+		{
+			this.x += this.vx;
+			this.y += this.vy;
+		};
+		 
+		Ball.prototype.draw = function(p)
+		{
+			p.fillRect(this.x, this.y, this.width, this.height);
+		};
+		
+		
+			
+			//game.start();
+			//MainLoop();
+
+		
+		function start(){
+
+			game.start();
+		}
+		function restart(){
+			location.reload();
+			//game1.start();
+		}
+		function gameover(){
+           clearTimeout(timeinterval);
+           oversound.play();
+           document.getElementById("over").style.visibility = "visible";
+           document.getElementById("start").style.visibility = "hidden";
+           document.getElementById("pause").style.visibility = "hidden";
+           document.getElementById("resume").style.visibility = "hidden";
+           document.getElementById("restart").style.visibility = "visible";
+
+           
+		}
+		function pause(){
+            clearTimeout(timeinterval);
+		}
+		function resume(){
+               MainLoop();
+
+		}
+		function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+        this.sound.play();
+    }
+    this.stop = function(){
+        this.sound.pause();
+    }
+}  
+		// Start the game execution
+		
+    
+       
+		</script>
+	</body>
+</html>

@@ -17,12 +17,18 @@ body{
 #mem{
 	background-color: #ff6600;
 	font-size: 4em;
-	margin-left: 15%;
+	margin-left: 3%;
 	margin-top: 5%;
 }
 #task{
 	background-color: #ff6600;
 	font-size: 4em;
 	margin-left:3%;
+	margin-top: 5%;
+}
+#pingpong{
+	background-color: #ff6600;
+	font-size: 4em;
+	margin-left:10%;
 	margin-top: 5%;
 }
