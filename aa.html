@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="css/style2.css">
+<style>
+body {
+  height: 2000px;
+  background: #f1f1f1;
+}
+
+#mySVG {
+  position: fixed;
+  top: 15%;
+  width: 100%;
+  height:300px;
+  
+  
+  z-index:20;
+}
+#canvas{
+  margin-left: 0px;
+  
+
+}
+#newBox{
+  visibility: hidden;
+  //-webkit-animation: myfirst 5s linear ; /* Chrome, Safari, Opera */
+   // animation: myfirst 5s linear;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+    0%   {  margin-top:200px;}
+    100%  {  margin-top:680px; visibility:hidden; }
+        
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+    0%   {  top:0px;}
+    100%  {  top:680px;visibility:hidden;}
+   
+}
+#cirlce1{
+  top: 0px;
+}
+@keyframes round {
+  0% { top:0px;left:0px;}
+  33%{ top:350px;left:0px;}
+  66%{top:0px; left:400px;}
+  100%{top:400px;left:800px;}
+}
+@-webkit-keyframes round {
+  0% { top:0px;}
+  33%{ top:350px;}
+  66%{top:0px; left:200px;}
+  100%{top:400px;left:400px;}
+
+}
+#tramp {
+    
+}
+</style>
+</head>
+<body>
+
+
+
+<svg id="mySVG">
+  <path fill="none" stroke="white" stroke-width="3" id="triangle" d="M170 80 A50 50 0 1 1 170 190 V 80" />
+<path fill="none" stroke="white" stroke-width="3" id="triangle1" d="M150 200  V70 A70 70 0 1 1 150 200 "/>
+<path fill="none" stroke="white" stroke-width="3" id="triangle2" d="M270 200 V60 H370 V80 H290 V120 H370"/>
+<path fill="none" stroke="white" stroke-width="3" id="triangle3" d="M370 120 V140 H290 V180 H370 V200 H270"/>
+<path fill="none" stroke="white" stroke-width="3" id="L1" d="M400 60 V200 H520 V180"/>
+<path fill="none" stroke="white" stroke-width="3" id="L2" d="M520 180 H420 V60 H400"/>
+<path fill="none" stroke="white" stroke-width="3" id="T1" d="M550 200 V80 H500 V60 H620"/>
+<path fill="none" stroke="white" stroke-width="3" id="T2" d="M550 200 H570 V80 H620 V60"/>
+<path fill="none" stroke="white" stroke-width="3" id="A1" d="M660 60 L 600 200 H620 L 640 140 H680 L700 200 H720 L660 60"/>
+<path fill="none" stroke="white" stroke-width="3" id="A2" d="M650 120 L 660 90 L 670 120 H650"/>
+
+Sorry, your browser does not support inline SVG.
+
+</svg>
+<!--<div class="card yellow" id="image-test" style="margin-top:200px; margin-left:900px;position:fixed; ">
+    <div style="width:100px;height:100px;padding=20px;">-->
+      <img src="images/box.gif" id="image-test" style="width:100px;height:100px;margin-top:200px; margin-left:900px;position:fixed;"><!--</div>
+</div>
+<div class="card pink" id="newBox" style="margin-top:200px; margin-left:900px;position:fixed; ">
+    <div style="width:80px;height:80px;padding=20px;">-->
+    <img src="images/box.gif" id="newBox" style="width:100px;height:100px;margin-top:200px; margin-left:900px;position:fixed;"><!--</div>
+</div>-->
+<div class="container yellow " style="width:100%;height:650px;"></div>
+<div class="container teal " style="width:100%;height:650px;"></div>
+<div class="container red " style="width:100%;height:650px;"></div>
+<div class="container blue " style="width:100%;height:650px;">
+<canvas id="canvas" width="900" height="650">
+This text is displayed if your browser does not support HTML5 Canvas.
+</canvas></div>
+<div class="card orange darken-4" style="width:15px;height:212px; margin-top:-650px; margin-left:845px;z-index:2;position:absolute;"></div>
+<div class="card orange darken-4" style="width:15px;height:250px; margin-top:-650px; margin-left:883px;z-index:2;position:absolute;"></div>
+<div class="card orange darken-4" style="width:635px;height:15px; margin-top:-450px; margin-left:225px;z-index:2;position:absolute;"></div>
+<div class="card orange darken-4" style="width:635px;height:15px; margin-top:-412px; margin-left:263px;z-index:2;position:absolute;"></div>
+<div class="card orange darken-4" style="width:15px;height:452px; margin-top:-450px; margin-left:210px;z-index:2;position:absolute;"></div>
+<div class="card orange darken-4" style="width:15px;height:415px; margin-top:-412px; margin-left:248px;z-index:2;position:absolute;"></div>
+<div class="container orange accent-2 " style="width:100%;height:450px;margin-top:-10px;">
+<div class="card blue" id="circle1" style="border-radius:50px; height:50px;width:50px;margin-left:180px;top:0px;z-index:2;"></div>
+<div id="tramp" style=" margin-top:300px;margin-left:50px;">
+<img src="images/trampo.gif"></div>
+</div>
+<div class="container blue darken-3" style="width:100%;height:650px;">
+
+</div>
+
+
+
+<script type="text/javascript" src="jquery-1.12.1.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript">
+// Get the id of the <path> element and the length of <path>
+var triangle = document.getElementById("triangle");
+var triangle1 = document.getElementById("triangle1");
+var triangle2 = document.getElementById("triangle2");
+var triangle3 = document.getElementById("triangle3");
+var L1 = document.getElementById("L1");
+var L2 = document.getElementById("L2");
+var T1 = document.getElementById("T1");
+var T2 = document.getElementById("T2");
+var A1 = document.getElementById("A1");
+var A2 = document.getElementById("A2");
+var length = triangle.getTotalLength();
+var length1 = triangle1.getTotalLength();
+var length2 = triangle2.getTotalLength();
+var length3 = triangle3.getTotalLength();
+var length4 = L1.getTotalLength();
+var length5 = L2.getTotalLength();
+var length6 = T1.getTotalLength();
+var length7 = T2.getTotalLength();
+var length8 = A1.getTotalLength();
+var length9 = A2.getTotalLength();
+
+// The start position of the drawing
+triangle.style.strokeDasharray = length;
+triangle1.style.strokeDasharray = length1;
+triangle2.style.strokeDasharray = length2;
+triangle3.style.strokeDasharray = length3;
+L1.style.strokeDasharray = length4;
+L2.style.strokeDasharray = length5;
+T1.style.strokeDasharray = length6;
+T2.style.strokeDasharray = length7;
+A1.style.strokeDasharray = length8;
+A2.style.strokeDasharray = length9;
+
+// Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
+triangle.style.strokeDashoffset = length;
+triangle1.style.strokeDashoffset = length1;
+triangle2.style.strokeDashoffset = length2;
+triangle3.style.strokeDashoffset = length3;
+L1.style.strokeDashoffset = length4;
+L2.style.strokeDashoffset = length5;
+T1.style.strokeDashoffset = length6;
+T2.style.strokeDashoffset = length7;
+A1.style.strokeDashoffset = length8;
+A2.style.strokeDashoffset = length9;
+
+// Find scroll percentage on scroll (using cross-browser properties), and offset dash same amount as percentage scrolled
+window.addEventListener("scroll", myFunction);
+
+function myFunction() {
+var scrollpercent = (document.body.scrollTop + document.documentElement.scrollTop) / (1400);
+if( scrollpercent > 1.01)
+ { //scrollpercent = 1;
+  document.getElementById("mySVG").style.visibility = "hidden";
+  //document.getElementById("newBox").style.-webkit-animation = "myfirst 5s forwards 0s";
+
+}
+if(scrollpercent < 1.01)
+{
+  document.getElementById("mySVG").style.visibility = "visible";
+}
+
+
+  var draw = length * scrollpercent;
+var draw1 = length1 * scrollpercent;
+var draw2 = length2 * scrollpercent;
+var draw3 = length3 * scrollpercent;
+var draw4 = length4 * scrollpercent;
+var draw5 = length5 * scrollpercent;
+var draw6 = length6 * scrollpercent;
+var draw7 = length7 * scrollpercent;
+var draw8 = length8 * scrollpercent;
+var draw9 = length9 * scrollpercent;
+  
+  // Reverse the drawing (when scrolling upwards)
+  triangle.style.strokeDashoffset = length - draw;
+triangle1.style.strokeDashoffset = length1 - draw1;
+triangle2.style.strokeDashoffset = length2 - draw2;
+triangle3.style.strokeDashoffset = length3 - draw3;
+L1.style.strokeDashoffset = length4 - draw4;
+L2.style.strokeDashoffset = length5 - draw5;
+T1.style.strokeDashoffset = length6 - draw6;
+T2.style.strokeDashoffset = length7 - draw7;
+A1.style.strokeDashoffset = length8 - draw8;
+A2.style.strokeDashoffset = length9 - draw9;
+}
+
+var canvas;
+var ctx;
+var dx = 5;
+var dy = 5;
+var x = 835;
+var y = 10;
+var WIDTH = 900;
+var HEIGHT = 650;
+
+
+function circle(x,y,r) {
+ctx.beginPath();
+ctx.arc(x, y, r, 0, Math.PI*2, true);
+ctx.fill();
+}
+
+function rect(x,y,w,h) {
+ctx.beginPath();
+ctx.rect(x,y,w,h);
+ctx.closePath();
+ctx.fill();
+ctx.stroke();
+}
+
+function clear() {
+ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
+function init() {
+canvas = document.getElementById("canvas");
+ctx = canvas.getContext("2d");
+return setInterval(draw, 10);
+}
+
+function doKeyDown(evt){
+if(((x>=835 && x<=840) && (y>=10 && y<=225))||(y==225 && (x<=835 && x>=200))||(x==200 && (y>=225))){
+switch (evt.keyCode) {
+case 87:  /* Up arrow was pressed */
+if (y!=10){
+y -= dy;
+}
+break;
+case 83:  /* Down arrow was pressed */
+if ((y!= 225 && x>=835 && x<=840)||(y==225 && x==200)||(x==200 && y>=225 && y<=635)){
+y += dy;
+}
+break;
+case 65:  /* Left arrow was pressed */
+if ((x!=835 && y<225)||(x<=835 && y==225 && x!=200)){
+x -= dx;
+}
+break;
+case 68:  /* Right arrow was pressed */
+if (x!=840){
+x += dx;
+}
+break;
+}
+}
+}
+
+function draw() {
+
+//if((x==835 && (y>=10 && y<=225))||(y==225 && (x<=835 && x>=200))||(x==200 && (y>=225)))
+clear();
+ctx.fillStyle = "white";
+ctx.strokeStyle = "black";
+
+ctx.fillStyle = "purple";
+circle(x, y, 10);
+checkfn();
+
+
+
+}
+init();
+window.addEventListener('keydown',doKeyDown,true);
+function checkfn(){
+if(x==200 && y==640){
+  
+  document.getElementById("circle1").style.WebkitAnimation = "round 6s forwards"; 
+  document.getElementById("circle1").style.animation = "round 6s forwards";
+  // document.getElementById("tramp").style.animation
+}
+}
+
+$(document).ready(function(){
+    $('#image-test').pushpin({ top: 100 });
+    var $scrollingDiv = $("#image-test");
+
+   $(window).scroll(function () {
+       $scrollingDiv.stop()
+           
+       //$scrollingDiv.css("background-color", (($(window).scrollTop() / $(document).height()) > 0.132 && ($(window).scrollTop() / $(document).height())<0.318) ? "#ffeb3b" : (($(window).scrollTop() / $(document).height()) > 0.318 && ($(window).scrollTop() / $(document).height())<0.635) ? "#009688" : "#ffeb3b");//(($(window).scrollTop() / $(document).height()) > 0.6325 && ($(window).scrollTop() / $(document).height())<0.665) ? "#f44336" : "#000" );
+       $scrollingDiv.css("visibility", (($(window).scrollTop() / $(document).height()) > 0.40) ? "hidden" : "visible");
+       $("#newBox").css("visibility", ((($(window).scrollTop() / $(document).height()) > 0.40) && ($(window).scrollTop() / $(document).height()) < 0.420)  ? "visible" : "hidden");
+       $("#newBox").css("-webkit-animation", ((($(window).scrollTop() / $(document).height()) > 0.40) && ($(window).scrollTop() / $(document).height()) < 0.420) ? "myfirst 5s forwards 0s" : "");
+       
+
+     });
+   
+  });
+</script>
+
+</body>
+</html>
+
