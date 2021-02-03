@@ -719,22 +719,22 @@
 .small-nav ul li { display: inline-block; text-transform: uppercase; padding: 10px 8px; font-size: 15px; }
 .small-nav ul li a { color: white; }
 
-/*.navigation #navicon { position: fixed; color: gray; font-size: 2.8em; margin-top: 0.8em; outline: none; z-index: 999; margin-left: 0.5em; }
+.navigation #navicon { position: fixed; color: gray; font-size: 2.8em; margin-top: 0.8em; outline: none; z-index: 999; margin-left: 0.5em; }
 .navigation #navicon:before { font-family: Flaticon, sans-serif; content: "\e142"; }
 .navigation #navicon:after { content: 'CLOSE'; display: block; font-size: 12px; margin-top: -4px; margin-left: 2px; }
 .navigation #navicon.closed { margin-left: 1em; }
 .navigation #navicon.closed:before { content: "\e0bb"; }
 .navigation #navicon.closed:after { content: 'MENU'; display: block; }
-.navigation #navicon:hover { color: #666666; cursor: pointer; }*/
+.navigation #navicon:hover { color: #666666; cursor: pointer; }
 
-.nav{
-/*    background: #CA3400;
-    color: #FFF;*/
+/*.nav{
+    background: #CA3400;
+    color: #FFF;
     display: flex
 }
 .nav {
     font-size: 24px;
- /*   padding: 20px;*/
+    padding: 20px;
     margin-left: 25px;
     margin-right: 10px;
 }
@@ -745,7 +745,7 @@
     display: flex;
     width: 50%;
     margin-left: auto
-}
+}*/
 
 .brand { text-align: center; position: absolute; height: 110px; margin: auto; top: 0; left: 0; bottom: 0; right: 0; z-index: 999; }
 .brand h1 { letter-spacing: 0.7em; font-size: 2.1em; text-shadow: 1px 1px 10px #3B3B3B; font-weight: 300; background: rgba(1, 1, 1, 0.34); padding: 0.3em; color: white; padding-left: 1em; animation-delay: 0.7s; -webkit-animation-delay: 0.7s; -moz-animation-delay: 0.7s; -o-animation-delay: 0.7s; ms-animation-delay: 0.7s; }
